@@ -26,12 +26,10 @@ def login():
         email = request.form['email']
         ticketnr = request.form['ticketnr']
 
-        email = "'" + email + "'"
-
         print(">>", str(email))
         # get id of costumer using email name as citeria from db.
         cur = mysql.connection.cursor()
-        cur.execute(f"SELECT id FROM Klanten WHERE email = Pieter@test.nl")
+        cur.execute(f"SELECT id FROM Klanten WHERE email = {email}")
         klant_id_Klanten = cur.fetchall()
         cur.close()
 
