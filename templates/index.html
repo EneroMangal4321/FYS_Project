@@ -214,7 +214,7 @@ nav .logo {
     padding: 15px;
 }
 
-/ For mobile phones: /
+/* / For mobile phones: / */
 [class="col-"] {
     width: 100%;
 }
@@ -275,20 +275,21 @@ nav .logo {
 
 <div class="login-box">
     <h1>Login</h1>
-    <div class="textbox">
-        <i class="fas fa-user"></i>
-        <input type="email" placeholder="E-mail" name="email" value="">
-    </div>
+	<form method="POST">
+		<div class="textbox">
+			<i class="fas fa-user"></i>
+			<input type="email" placeholder="E-mail" name="email" value="">
+		</div>
 
-    <div class="textbox">
-        <i class="fas fa-lock"></i>
-        <input type="text" placeholder="Ticketnumber" name="" value="">
-    </div>
+		<div class="textbox">
+			<i class="fas fa-lock"></i>
+			<input type="number" placeholder="Ticketnumber" name="ticketnr" value="">
+		</div>
 
-    <a href="WiFi_verbinding.html">
-   <input class="btn" type="button" name="" value="Connect">
-    </a>
-
+		<!-- <a href="WiFi_verbinding.html"> -->
+		<input class="btn" type="submit" name="" value="Connect">
+		<!-- </a> -->
+	</form>
 </div>
 
 </section>
