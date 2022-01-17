@@ -39,16 +39,20 @@ def login():
         klant_id_Ticket = cur.fetchall()
         cur.close()
 
-        # check if the klantid is the same as the id of the Klanten table.
-        if klant_id_Klanten == klant_id_Ticket:
-            # print(">", type(klant_id_Ticket))
-            # print(klant_id_Ticket[0][0])
-            klant_id_Ticket = int(klant_id_Ticket[0][0])
-            cur = mysql.connection.cursor()
-            cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
-            fname = cur.fetchall()
-            cur.close()
-            return render_template("test.html", fname = fname[0][0])
+        try:
+            # check if the klantid is the same as the id of the Klanten table.
+            if klant_id_Klanten == klant_id_Ticket:
+                # print(">", type(klant_id_Ticket))
+                # print(klant_id_Ticket[0][0])
+                klant_id_Ticket = int(klant_id_Ticket[0][0])
+                cur = mysql.connection.cursor()
+                cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
+                fname = cur.fetchall()
+                cur.close()
+                return render_template("test.html", fname = fname[0][0])
+        except Exception as identifier:
+            print("Incorrecte naam of ticketnummer")
+            return  render_template("login-test.html")
         
         else:
             print("Incorrecte naam of ticketnummer")
