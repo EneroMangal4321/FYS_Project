@@ -1,16 +1,8 @@
 from flask import Flask, render_template, request, url_for
-from flask_mysqldb import MySQL
-from datetime import datetime
+
 
 app = Flask(__name__)
 
-#Configure db
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'enero'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'fys'
-
-mysql = MySQL(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home_pagina():
