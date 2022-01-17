@@ -48,7 +48,7 @@ def login():
             cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
             fname = cur.fetchall()
             cur.close()
-            return render_template("test.html", fname = fname)
+            return render_template("test.html", fname = fname[0][0])
         
         else:
             print("Incorrecte naam of ticketnummer")
