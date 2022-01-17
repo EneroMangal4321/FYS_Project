@@ -14,16 +14,6 @@ app.config['MYSQL_DB'] = 'fys'
 
 mysql = MySQL(app)
 
-# @app.route('/', methods=['GET', 'POST'])
-# def home_pagina():
-#     error = None
-#     if request.method == 'POST':
-#         if request.form['Surname'] != 'admin' or request.form['Ticketnumber'] != 'admin':
-#             error = 'Invalid Surname and/or Ticketnumber, try again.'
-#         else:
-#             return {{url_for('wifi_verbinding')}}
-#     return render_template('/index.html', error=error)
-
 @app.route("/", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
