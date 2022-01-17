@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, url_for
 from flask_mysqldb import MySQL
 from datetime import datetime
 
+from update_fw import rerouteRequest
+
 app = Flask(__name__)
 
 #Configure db
@@ -51,6 +53,7 @@ def login():
                 cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
                 fname = cur.fetchall()
                 cur.close()
+                rerouteRequest()
                 return render_template("WiFi_verbinding.html", fname = fname[0][0])
         except Exception as identifier:
             error = "Incorrecte naam of ticketnummer"
