@@ -23,13 +23,13 @@ def test():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-        email = request.form['email']
+        achternaam = request.form['sname']
         ticketnr = request.form['ticketnr']
 
-        print(">>", str(email))
+        print(">>", str(achternaam))
         # get id of costumer using email name as citeria from db.
         cur = mysql.connection.cursor()
-        cur.execute(f"SELECT id FROM Klanten WHERE email = {email}")
+        cur.execute(f"SELECT id FROM Klanten WHERE achternaam = {achternaam}")
         klant_id_Klanten = cur.fetchall()
         cur.close()
 
