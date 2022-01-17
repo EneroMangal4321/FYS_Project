@@ -29,20 +29,20 @@ def login():
         print(">>", str(achternaam))
         # get id of costumer using email name as citeria from db.
         cur = mysql.connection.cursor()
-        cur.execute(f"SELECT id FROM Klanten WHERE achternaam = {achternaam}")
+        cur.execute("""SELECT id FROM Klanten WHERE achternaam = %s""" % (str(achternaam)))
         klant_id_Klanten = cur.fetchall()
         cur.close()
 
         # get klantid from db using ticketnumber as criteria.
         cur = mysql.connection.cursor()
-        cur.execute(f"SELECT klantid FROM Ticket WHERE id = {ticketnr}")
+        cur.execute("""SELECT klantid FROM Ticket WHERE id = %s""" % (int(ticketnr)))
         klant_id_Ticket = cur.fetchall()
         cur.close()
 
         # check if the klantid is the same as the id of the Klanten table.
         if klant_id_Klanten == klant_id_Ticket:
             cur = mysql.connection.cursor()
-            cur.execute(f"SELECT voornaam FROM Klanten WHERE id = {klant_id_Ticket}")
+            cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
             fname = cur.fetchall()
             cur.close()
             return render_template("test.html", fname = fname)
