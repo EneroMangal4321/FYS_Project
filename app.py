@@ -12,24 +12,24 @@ app.config['MYSQL_DB'] = 'fys'
 
 mysql = MySQL(app)
 
-@app.route('/')
-def test():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT voornaam FROM Klanten WHERE id = 1")
-    fetchdata = cur.fetchall()
-    cur.close()
-    return render_template("test.html", fname = fetchdata)
+# @app.route('/')
+# def test():
+#     cur = mysql.connection.cursor()
+#     cur.execute("SELECT voornaam FROM Klanten WHERE id = 1")
+#     fetchdata = cur.fetchall()
+#     cur.close()
+#     return render_template("test.html", fname = fetchdata)
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-        achternaam = request.form['sname']
+        email = request.form['email']
         ticketnr = request.form['ticketnr']
 
-        print(">>", str(achternaam))
+        email = f"'{email}'"
         # get id of costumer using email name as citeria from db.
         cur = mysql.connection.cursor()
-        cur.execute("""SELECT id FROM Klanten WHERE achternaam = %s""" % (str(achternaam)))
+        cur.execute("""SELECT id FROM Klanten WHERE email = %s""" % (str(email)))
         klant_id_Klanten = cur.fetchall()
         cur.close()
 
@@ -41,6 +41,9 @@ def login():
 
         # check if the klantid is the same as the id of the Klanten table.
         if klant_id_Klanten == klant_id_Ticket:
+            # print(">", type(klant_id_Ticket))
+            # print(klant_id_Ticket[0][0])
+            klant_id_Ticket = int(klant_id_Ticket[0][0])
             cur = mysql.connection.cursor()
             cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
             fname = cur.fetchall()
