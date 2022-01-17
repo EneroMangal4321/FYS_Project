@@ -36,8 +36,6 @@ def login():
 
             # check if the klantid is the same as the id of the Klanten table.
             if klant_id_Klanten == klant_id_Ticket:
-                # print(">", type(klant_id_Ticket))
-                # print(klant_id_Ticket[0][0])
                 klant_id_Ticket = int(klant_id_Ticket[0][0])
                 cur = mysql.connection.cursor()
                 cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
