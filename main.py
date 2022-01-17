@@ -43,6 +43,7 @@ def login():
                 cur.close()
                 rerouteRequest()
                 return render_template("WiFi_verbinding.html", fname = fname[0][0])
+
         except Exception as identifier:
             error = "Incorrecte naam of ticketnummer"
             return  render_template("index.html", error = error)
