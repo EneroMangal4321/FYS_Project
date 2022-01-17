@@ -6,7 +6,9 @@
 </head>
 <body>
 <style>
-    body {
+@import url ("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+body {
     margin: 0;
     font-family: 'Work Sans', sans-serif;
     font-weight: 800%;
@@ -48,6 +50,7 @@ nav .links {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	color: #d9452b;
 }
 nav .links li {
 	list-style: none;
@@ -57,7 +60,7 @@ nav .links a {
 	padding: 1em;
 	font-size: 16px;
 	font-weight: bold;
-	color: #000000;
+	color: #d9472e;
 	text-decoration: none;
 }
 #nav-toggle {
@@ -101,6 +104,7 @@ nav .icon-burger .line {
 		overflow: hidden;
 		box-sizing: border-box;
 		transition: all .5s ease-in-out;
+		color: #d9452b;
 	}
 	nav .links a {
 		font-size: 20px;
@@ -124,11 +128,15 @@ nav .icon-burger .line {
 
 }
 
-.logo {
-  position: relative;
-  width: 60%;
+nav .logo {
+  height: 90%
+}
+
+.text {
+ margin-top: 10%
 }
 </style>
+
 <nav>
 	<input class="col-12" id="nav-toggle" type="checkbox">
 
@@ -147,6 +155,15 @@ nav .icon-burger .line {
 		<div class="line"></div>
 	</label>
 </nav>
+
+<div class="text">
+<h1>You are now granted with internet connection</h1>
+<h1>Surve on the web and enjoy your flight</h1>
+</div>
+
+    <a href="/">
+   <input class="btn" type="button" name="" value="Go back">
+    </a>
 
 </body>
 </html>

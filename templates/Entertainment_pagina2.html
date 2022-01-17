@@ -18,11 +18,6 @@ body {
 	margin: 0;
 }
 
-.verschil_tekst {
-	position: relative;
-
-}
-
 nav {
 	position: fixed;
 	z-index: 3;
@@ -53,6 +48,7 @@ nav .links {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	color: #d9452b;
 }
 nav .links li {
 	list-style: none;
@@ -62,7 +58,7 @@ nav .links a {
 	padding: 1em;
 	font-size: 16px;
 	font-weight: bold;
-	color: #000000;
+	color: #d9472e;
 	text-decoration: none;
 }
 #nav-toggle {
@@ -106,6 +102,7 @@ nav .icon-burger .line {
 		overflow: hidden;
 		box-sizing: border-box;
 		transition: all .5s ease-in-out;
+		color: #d9452b;
 	}
 	nav .links a {
 		font-size: 20px;
@@ -129,21 +126,78 @@ nav .icon-burger .line {
 
 }
 
+nav .logo {
+  height: 90%
+}
+
 .logo {
   position: relative;
   width: 60%;
 }
-
-.video {
-    margin-top: 17%;
-    margin-left: 5%;
+@media screen and (min-width: 220px) and (max-width: 750px ){
+.wrapper {
+ position: relative;
+ overflow: hidden;
+ padding-top: 56.25%;
+ margin-top: 50%;
 }
 
-.videoo {
-    margin-top: -21%;
-    margin-left: 57%;
+.wrapper iframe {
+ position: absolute;
+ margin-top: -10%;
+ left: 20%;
+ width: 60%;
+ height: 60%;
 
 }
+
+.wrapperr {
+ position: relative;
+ overflow: hidden;
+ padding-top: 56.25%;
+}
+
+.wrapperr iframe {
+ position: absolute;
+ top: 30%;
+ left: 20%;
+ width: 60%;
+ height: 60%;
+
+}
+}
+
+
+.wrapper {
+ position: relative;
+ overflow: hidden;
+ padding-top: 56.25%;
+}
+
+.wrapper iframe {
+ position: absolute;
+ top: 20%;
+ left: 20%;
+ width: 60%;
+ height: 60%;
+
+}
+
+.wrapperr {
+ position: relative;
+ overflow: hidden;
+ padding-top: 56.25%;
+}
+
+.wrapperr iframe {
+ position: absolute;
+ top: 30%;
+ left: 20%;
+ width: 60%;
+ height: 60%;
+
+}
+
 </style>
 
 <nav>
@@ -165,13 +219,13 @@ nav .icon-burger .line {
 	</label>
 </nav>
 
-<div class="video">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-obKX-mqjXQ" title="YouTube video player" frameborder="0"
+<div class="wrapper">
+<iframe src="https://www.youtube.com/embed/-obKX-mqjXQ" title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-<div class="videoo">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7mKM_ge839U" title="YouTube video player" frameborder="0"
+<div class="wrapperr">
+    <iframe src="https://www.youtube.com/embed/7mKM_ge839U" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 </body>

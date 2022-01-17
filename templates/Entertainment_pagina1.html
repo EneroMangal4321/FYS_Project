@@ -18,11 +18,6 @@ body {
 	margin: 0;
 }
 
-.verschil_tekst {
-	position: relative;
-
-}
-
 nav {
 	position: fixed;
 	z-index: 3;
@@ -53,6 +48,7 @@ nav .links {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	color: #d9452b;
 }
 nav .links li {
 	list-style: none;
@@ -62,13 +58,12 @@ nav .links a {
 	padding: 1em;
 	font-size: 16px;
 	font-weight: bold;
-	color: #000000;
+	color: #d9472e;
 	text-decoration: none;
 }
 #nav-toggle {
 	position: absolute;
 	top: -100px;
-
 }
 nav .icon-burger {
 	display: none;
@@ -107,6 +102,7 @@ nav .icon-burger .line {
 		overflow: hidden;
 		box-sizing: border-box;
 		transition: all .5s ease-in-out;
+		color: #d9452b;
 	}
 	nav .links a {
 		font-size: 20px;
@@ -127,6 +123,11 @@ nav .icon-burger .line {
 	nav :checked ~ .icon-burger .line:nth-child(2) {
 		opacity: 0;
 	}
+
+}
+
+nav .logo {
+  height: 90%
 }
 
 .logo {
@@ -135,26 +136,29 @@ nav .icon-burger .line {
 }
 
 .foto_1 {
-    width: 45%;
-    margin-left: -10%;
-    margin-bottom: -5%;
+    width: 100%;
+
 }
 
 .foto_2 {
-    width: 45%;
-    margin-left: 10%;
-    margin-bottom: -5%;
+    width: 100%;
 }
 .btn {
 	position: relative;
     left: 45%;
-    margin-top: 4%;
+    margin-top: 3%;
 }
 
 .verschil_tekst {
+	position: relative;
 	margin-top: 8%;
-	margin-left: 40%;
+	margin-left: 38%;
 }
+
+.zoek_de_verschillen {
+	margin-top: 12%;
+}
+
 
 * {
     box-sizing: border-box;
@@ -171,7 +175,7 @@ nav .icon-burger .line {
     padding: 15px;
 }
 
-/* For mobile phones: */
+/* / For mobile phones: / */
 [class="col-"] {
     width: 100%;
 }
@@ -210,10 +214,6 @@ nav .icon-burger .line {
 
 
 
-<div class="col-6 verschil_tekst">
-<h1>Zoek de verschillen</h1>
-</div>
-
 <nav>
 	<input id="nav-toggle" type="checkbox">
 
@@ -233,16 +233,21 @@ nav .icon-burger .line {
 	</label>
 </nav>
 
+<div class="zoek_de_verschillen">
+
+<div class="col-6 verschil_tekst">
+<h1>Zoek de verschillen</h1>
+</div>
+
+    <img src="/static/images/zoekdeverschillen_1.png" alt="foto" class="foto_1">
+<hr>
+    <img src="/static/images/zoekdeverschillen_2.png" alt="foto" class="foto_2">
+
 	<a href="Zoek_de_verschillen_oplossing.html">
 	<button class="btn" id="submit">Ga naar de oplossing</button>
 	</a>
 
 
-    <img src="/static/images/zoekdeverschillen_1.png" alt="foto" class="foto_1">
-    <img src="/static/images/zoekdeverschillen_2.png" alt="foto" class="foto_2">
-
-
-
-
+</div>
 </body>
 </html>
