@@ -29,19 +29,19 @@ def login():
         ticketnr = request.form['ticketnr']
 
         email = f"'{email}'"
-        # get id of costumer using email name as citeria from db.
-        cur = mysql.connection.cursor()
-        cur.execute("""SELECT id FROM Klanten WHERE email = %s""" % (str(email)))
-        klant_id_Klanten = cur.fetchall()
-        cur.close()
-
-        # get klantid from db using ticketnumber as criteria.
-        cur = mysql.connection.cursor()
-        cur.execute("""SELECT klantid FROM Ticket WHERE id = %s""" % (int(ticketnr)))
-        klant_id_Ticket = cur.fetchall()
-        cur.close()
-
         try:
+            # get id of costumer using email name as citeria from db.
+            cur = mysql.connection.cursor()
+            cur.execute("""SELECT id FROM Klanten WHERE email = %s""" % (str(email)))
+            klant_id_Klanten = cur.fetchall()
+            cur.close()
+
+            # get klantid from db using ticketnumber as criteria.
+            cur = mysql.connection.cursor()
+            cur.execute("""SELECT klantid FROM Ticket WHERE id = %s""" % (int(ticketnr)))
+            klant_id_Ticket = cur.fetchall()
+            cur.close()
+
             # check if the klantid is the same as the id of the Klanten table.
             if klant_id_Klanten == klant_id_Ticket:
                 # print(">", type(klant_id_Ticket))
@@ -55,13 +55,8 @@ def login():
         except Exception as identifier:
             error = "Incorrecte naam of ticketnummer"
             return  render_template("index.html", error = error)
-        
-        else:
-            print("Incorrecte naam of ticketnummer")
-            return  render_template("index.html")
-    
-    return  render_template("index.html")
 
+    return  render_template("index.html")
 
 @app.route('/WiFi_verbinding.html', methods=['GET', 'POST'])
 def wifi_verbinding():
