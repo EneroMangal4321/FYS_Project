@@ -16,6 +16,7 @@ mysql = MySQL(app)
 
 @app.route("/", methods=["POST", "GET"])
 def login():
+    user_ip = request.environ['REMOTE_ADDR']
     if request.method == "POST":
         email = request.form['email']
         ticketnr = request.form['ticketnr']
@@ -41,7 +42,7 @@ def login():
                 cur.execute("""SELECT voornaam FROM Klanten WHERE id = %s""" % (int(klant_id_Ticket)))
                 fname = cur.fetchall()
                 cur.close()
-                rerouteRequest()
+                rerouteRequest(user_ip)
                 return render_template("WiFi_verbinding.html", fname = fname[0][0])
 
         except Exception as identifier:

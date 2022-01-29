@@ -1,16 +1,20 @@
 import subprocess
 
-correct_user = "enero"
 
-# sudo apt-get install iptables-persistent
-def rerouteRequest():
-    output = subprocess.getoutput("iptables -t nat -A PREROUTING -i wlan0ap -p tcp --dport 80 -j DNAT  --to-destination  192.168.1.99:80")
-    output1 = subprocess.getoutput("iptables -t nat -A PREROUTING -i wlan0ap -p tcp --dport 443 -j DNAT  --to-destination  192.168.1.99:80")
-    save_output = subprocess.getoutput("sudo /etc/init.d/iptables-persistent save")
-    print(output)
-    print(output1)
-    print(save_output)
+def rerouteRequest(user_ip):
+    update_rules = subprocess.getoutput(f"sudo iptables -t nat -I PREROUTING -s {user_ip} -j ACCEPT")
+    save_rules = subprocess.getoutput("sudo netfilter-persistent save")
+    reload_iptable = subprocess.getoutput("sudo netfilter-persistent reload")
+    print(update_rules)
+    print(save_rules)
+    print(reload_iptable)
     print("OK")
+
+    # base_rule = "sudo iptables --table nat --append PREROUTING --protocol tcp --dport 443 --jump DNAT --to-destination 192.168.3.2:5000"
+    # base_rule = "sudo iptables --table nat --append PREROUTING --protocol udp --dport 443 --jump DNAT --to-destination 192.168.3.2:5000"
+
+    # base_rule = "sudo iptables --table nat --append PREROUTING --protocol tcp --dport 80 --jump DNAT --to-destination 192.168.3.2:5000"
+    # base_rule = "sudo iptables --table nat --append PREROUTING --protocol udp --dport 80 --jump DNAT --to-destination 192.168.3.2:5000"
 
 if __name__ == "__main__":
     rerouteRequest()
